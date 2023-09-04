@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { connectDB } from "/util/database";
-export default async function List() {
+
+export default async function List(pros) {
   const client = await connectDB;
   const db = client.db("forum"); //
   let result = await db.collection("post").find().toArray();
@@ -10,7 +12,9 @@ export default async function List() {
         return (
           <div className="list-item" key={i}>
             <div>
-              <h4>{res.title}</h4>
+              <Link href={"/detail/" + result[i]._id}>
+                <h4>{res.title}</h4>
+              </Link>
               <p>{res.content}</p>
               <p>1월1일</p>
             </div>

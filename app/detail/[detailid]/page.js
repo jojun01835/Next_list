@@ -3,13 +3,13 @@ import { connectDB } from "@/util/database.js";
 
 export default async function Detail(props) {
   let db = (await connectDB).db("forum");
-  let result = await db.collection("post").findOne({ _id: new ObjectId(props.params.id) });
-  console.log(props.params.id);
+  let result = await db.collection("post").findOne({ _id: new ObjectId(props.params.detailid) }); // 유저가 입력한 Id값을 Url에 넣고 불러옴
+  console.log(result);
   return (
     <div>
       <h4>상세페이지임</h4>
-      <h4>{result}</h4>
-      <p>{result}</p>
+      <h4>{result.title}</h4>
+      <p>{result.content}</p>
     </div>
   );
 }
