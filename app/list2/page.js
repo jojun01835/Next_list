@@ -2,7 +2,7 @@ import Link from "next/link";
 import { connectDB } from "/util/database";
 import ListItem from "./ListItem";
 
-export const dynamic = "force-dyamic";
+export const revalidate = 20;
 
 export default async function List(pros) {
   const client = await connectDB;

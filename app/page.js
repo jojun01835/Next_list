@@ -3,6 +3,8 @@ import { connectDB } from "/util/database";
 import styles from "./page.module.css";
 import { MongoClient } from "mongodb";
 
+export const revalidate = 60;
+
 export default async function Home() {
   const client = await connectDB;
   const db = client.db("forum"); //
